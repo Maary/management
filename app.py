@@ -1,8 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 '''for test'''
 from flask import request
 from flask import make_response
 from flask_script import Manager
+import time
 
 app = Flask(__name__)
 handler = Manager(app)
@@ -11,6 +12,16 @@ handler = Manager(app)
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+
+@app.route('/time')
+def current_t():
+    return '<p>time: %s</p>' %time.asctime(time.localtime(time.time()))
+
+
+@app.route('/<name>')
+def render(name):
+    return render_template('index.html', name_place=name)
 
 
 @app.route('/test')
