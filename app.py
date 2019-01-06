@@ -2,8 +2,10 @@ from flask import Flask
 '''for test'''
 from flask import request
 from flask import make_response
+from flask_script import Manager
 
 app = Flask(__name__)
+handler = Manager(app)
 
 
 @app.route('/')
@@ -23,10 +25,6 @@ def test_rsp():
     response.set_cookie('cookie1', 'qwe')
     return response
 
-'''
-
-'''
-
 
 if __name__ == '__main__':
-    app.run()
+    handler.run()
