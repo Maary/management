@@ -27,7 +27,12 @@ class Config:
         value = self._get(sec, name)
         return int(value)
 
-    def get_strings(self, sec, name):
+    def get_string_ary(self, sec, name):
         values = self.get_string(sec, name)
         return values.split(",")
 
+    def get_int_ary(self, sec, name):
+        values = self.get_string(sec, name)
+        values = values.lstrip("\"").rstrip("\"")
+        a = values.split(",")
+        return list(map(lambda x: int(x), a))

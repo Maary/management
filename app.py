@@ -16,7 +16,7 @@ def hello_world():
 
 @app.route('/time')
 def current_t():
-    return '<p>time: %s</p>' %time.asctime(time.localtime(time.time()))
+    return '<p>time: %s</p>' % time.asctime(time.localtime(time.time()))
 
 
 @app.route('/<name>')
